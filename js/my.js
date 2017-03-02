@@ -76,7 +76,7 @@ commodities['test'] = new commodity('test');
 function updateCharts() {
 
     var tt = ((new Date()).getTime());
-    append(commodities['test'], 9800, 1, tt);
+    append(commodities['test'], Math.random() * 2000 + 8000, Math.random() * 10, tt);
     chart.options.axisX.minimum = tt - 60000;
     //dataPoints.push({x:tt,y:9800});
     //volume_points.push({x:tt,y:12});
