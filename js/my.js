@@ -60,12 +60,12 @@ function commodity(code) {
     this.closePoints = [];
 }
 
-function append(obj, close, volume, timeStamp) {
-    obj.closePoints.push({x: timeStamp, y: close});
-    obj.volumePoints.push({x: timeStamp, y: volume});
-    if (obj.closePoints.length > 300) {
-        obj.closePoints.shift();
-        obj.volumePoints.shift();
+commodity.prototype.append = function(Close,Volume,timeStamp){
+    this.closePoints.push({x: timeStamp, y: Close});
+    this.volumePoints.push({x: timeStamp, y: Volume});
+    if (this.closePoints.length > 300) {
+        this.closePoints.shift();
+        this.volumePoints.shift();
     }
 }
 
@@ -75,7 +75,7 @@ commodities['test'] = new commodity('test');
 function updateCharts() {
 
     var tt = ((new Date()).getTime());
-    append(commodities['test'], Math.random() * 2000 + 8000, Math.random() * 10, tt);
+    commodities['test'].append( Math.random() * 2000 + 8000, Math.random() * 10, tt);
     chart.options.axisX.minimum = tt - 60000;
     chart.options.title.text = tt;
     chart.options.data[0].dataPoints = commodities['test'].closePoints;
