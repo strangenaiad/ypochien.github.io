@@ -65,7 +65,7 @@ function onMessageArrived(message) {
             commodities[topic] = new Commodity(topic);
         }
         var real_timestamp = parseInt(obj.TimeStamp)*1000;
-        console.log(topic,real_timestamp);
+        //console.log(topic,real_timestamp);
         commodities[topic].append( parseFloat(obj.Close), obj.Volume ,real_timestamp);
     }
 };
@@ -74,7 +74,6 @@ var dataPoints = [];
 var volume_points = [];
 $(function () {
     var tt = ((new Date()).getTime());
-    console.log(tt);
     chart = new CanvasJS.Chart("chartContainer", {
         theme: "theme2",
         title: {
